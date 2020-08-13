@@ -33,3 +33,7 @@ code {
   display: inline;
   padding: 5px;
 }
+
+.searchcontainer {
+  display: inline-block;
+}
