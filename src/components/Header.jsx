@@ -5,7 +5,7 @@ export default class Header extends Component {
     render() {
         return (
             <div className="header">
-                <img src={ Logo } className="logo"/>
+                <img src={ Logo } className="logo" alt="HoochNet"/>
                 <ul className="nav">
                     <li><a href = "/">Home</a></li>
                     <li><a href = "/">Log In / Sign Up</a></li>
