@@ -1,66 +1,106 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Results from './SearchResults';
+import Loader from './loader.gif';
 
-
-export default class Search extends Component {
+export default class SearchV2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            query: '',
+            results: {},
+            loading: false,
+            message: '',
             baseURL: 'https://www.thecocktaildb.com/api/json/v2/',
             key: process.env.REACT_APP_COCKTAIL_API_KEY,
             searchBase: '/search.php?s=',
-            searchQuery: '',
-            results: [],
+        };
+        this.cancel = '';
+    };
+    handleOnInputChange = (event) => {
+        const query = event.target.value;
+        if ( ! query ) {
+            this.setState({ query, results: {}, message: '' });
+        } else {
+            this.setState({ query, loading: true, message: '' },
+            () => {
+                this.fetchSearchResults(query);
+            });
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        axios.get(this.state.baseURL + this.state.key + this.state.searchBase + this.state.searchQuery)
-            .then((response) => {
-                const results = response
-                // !!! Take Out Below Prior to Production --- Need to pass results down to search result component -- Look into making this into a live search (https://medium.com/@imranhsayed/live-search-with-react-instant-search-pagination-6acd476af756) //
-                console.log(results)
-                this.setState({
-                    results: results.data
-                })
+    };
+    fetchSearchResults = (query) => {
+        const searchURL = this.state.baseURL + this.state.key + this.state.searchBase + this.state.query
+        if (this.cancel) {
+            this.cancel.cancel()
+        }
+        this.cancel = axios.CancelToken.source();
+        
+        axios
+            .get(searchURL, {
+                cancelToken: this.cancel.token,
             })
-    }
-    handleChange(event) {
-        this.setState({
-            [event.target.id]: event.target.value,
-        })
+            .then((res) => {
+                const resultNotFoundMsg = !res.data.drinks.length
+                ? 'There are no search results. Please try searching something else.'
+                :'';
+
+                this.setState({
+                    results: res.data.drinks,
+                    message: resultNotFoundMsg,
+                    loading: false,
+                });
+                console.log(res)
+            })
+            .catch((error) => {
+                if (axios.isCancel(error) || error) {
+                    this.setState({
+                        loading: false,
+                        message: 'Failed to fetch search results. Please check network connection.',
+                    })
+                    console.log(error)
+                }
+            });
+    };
+    renderSearchResults = () => {
+        const {results} = this.state;
+        if (Object.keys(results).length && results.length) {
+            return (
+                <div className="results-container">
+                    {results.slice(0,9).map((result) => {
+                        return (
+                            <>
+                                <h4 className="drink-name">{result.strDrink}</h4>
+                                <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
+                            </>
+                        )
+                    })}
+                </div>
+            )
+        }
     }
     render() {
+        const { query, message, loading } = this.state;
+
         return (
-            <>
-                <div className="search-container">
-                    <h1 className="page-welcome">Welcome to HoochNet!</h1>
-                    <h2 className="page-about">Short for "Hooch Cabinet", we aim to serve as your online liquor cabinet and barkeep!</h2>
-                    <br /><br />
-                    <h3 className="search-info">Have a cocktail on your mind, but can't remember how to make it? <br /><br /> Search for it below!</h3>
-                    <form className="search" onSubmit={this.handleSubmit}>
-                        <input
-                            type="text"
-                            id="searchQuery"
-                            className="search-bar"
-                            onChange={this.handleChange}
-                            value={this.state.searchQuery}
-                        /> <br />
-                        <input
-                            type="submit"
-                            value="Find a Cocktail"
-                            className="search-button"
-                        />
-                    </form>
-                </div>
-                {/* !!! Prior to production release change this to its own page */}
-                <div className="results">
-                    <Results results={this.state.results}/>
-                </div>
-            </>    
+            <div className="search-container">
+                <h1 className="page-welcome">Welcome to HoochNet!</h1>
+                <h2 className="page-about">Short for "Hooch Cabinet", we aim to serve as your online liquor cabinet and barkeep!</h2>
+                <br /><br />
+                <h3 className="search-info">Have a cocktail on your mind, but can't remember how to make it? <br /><br /> Search for it below!</h3>
+                <label className="search-label" htmlFor="search-input">
+                    <input
+                        type="text"
+                        value={query}
+                        id="search-input"
+                        placeholder="Search Here"
+                        onChange={this.handleOnInputChange}
+                    />
+                </label>
+                { message && <p className="message">{message}</p> }
+                <img src={Loader} className={`search-loading ${loading ? 'show' :
+                'hide' }`} alt="Loading" />
+                { this.renderSearchResults() }
+            </div>
         )
     }
 }
+
