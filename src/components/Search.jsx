@@ -39,13 +39,8 @@ export default class SearchV2 extends Component {
                 cancelToken: this.cancel.token,
             })
             .then((res) => {
-                const resultNotFoundMsg = !res.data.drinks.length
-                ? 'There are no search results. Please try searching something else.'
-                :'';
-
                 this.setState({
                     results: res.data.drinks,
-                    message: resultNotFoundMsg,
                     loading: false,
                 });
                 console.log(res)
@@ -54,9 +49,9 @@ export default class SearchV2 extends Component {
                 if (axios.isCancel(error) || error) {
                     this.setState({
                         loading: false,
-                        message: 'Failed to fetch search results. Please check network connection.',
+                        message: 'Failed to find any search results. Please check network connection or try a new search!',
                     })
-                    console.log(error)
+                    console.log(error);
                 }
             });
     };
@@ -74,9 +69,9 @@ export default class SearchV2 extends Component {
                         )
                     })}
                 </div>
-            )
-        }
-    }
+            );
+        };
+    };
     render() {
         const { query, message, loading } = this.state;
 
@@ -104,3 +99,4 @@ export default class SearchV2 extends Component {
     }
 }
 
+// !!! Figure out how to clear result display if user clears search field, also would like to have a title stating what the user has searched for above result display //
