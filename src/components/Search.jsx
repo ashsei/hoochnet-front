@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Results from './SearchResults';
 
+
 export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            baseURL: 'https://www.thecocktaildb.com/api/json/v1/',
-            // !!! Replace below with production key when received from Patreon - Hide in .env before pushing  //
-            key: '1/',
-            searchBase: 'search.php?s=',
+            baseURL: 'https://www.thecocktaildb.com/api/json/v2/',
+            key: process.env.REACT_APP_COCKTAIL_API_KEY,
+            searchBase: '/search.php?s=',
             searchQuery: '',
             results: [],
         }
@@ -21,10 +21,10 @@ export default class Search extends Component {
         axios.get(this.state.baseURL + this.state.key + this.state.searchBase + this.state.searchQuery)
             .then((response) => {
                 const results = response
-                // !!! Take Out Below Prior to Production --- Need to pass results down to search result component //
+                // !!! Take Out Below Prior to Production --- Need to pass results down to search result component -- Look into making this into a live search (https://medium.com/@imranhsayed/live-search-with-react-instant-search-pagination-6acd476af756) //
                 console.log(results)
                 this.setState({
-                    results: results
+                    results: results.data
                 })
             })
     }

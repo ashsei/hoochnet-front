@@ -11,7 +11,8 @@ export default class SearchResults extends Component {
         return (
             <div>
                 <ul>
-                    { this.state.results.map(result => <li>result.drinks.strDrink</li>) }
+                    {/* !!! This isn't working !!! (This component may be replaced with live search functionality leading to a recipe show page based on user selection!) */}
+                    { this.state.results.map(result => <li>result.strDrink</li>) }
                 </ul>
             </div>
         )
