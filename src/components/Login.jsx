@@ -4,15 +4,10 @@ import Logout from "./Logout"
 
 
 const LoginButton = () => {
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const { loginWithRedirect} = useAuth0();
     return (
-        isAuthenticated ? (
-            <Logout />
-            // !!! Add Link to Profile Component When Logged In !!!
-        ) : (
-            <button onClick={() => loginWithRedirect()}>Log In / Sign Up</button>
-        )
-    );
+        <button onClick={() => loginWithRedirect()}>Log In / Sign Up</button>
+    )
 };
 
 export default LoginButton;
