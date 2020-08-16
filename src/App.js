@@ -4,6 +4,9 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Recipe from './components/Recipe';
+import Cabinet from './components/Cabinet';
+
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 
@@ -25,6 +28,9 @@ export default class App extends Component {
               {/* Recipes Route */}
               <Route exact path="/recipes/:drinkID"
               render={() => ( <Recipe /> )} />
+              {/* Cabinet Route */}
+              <Route exact path="/cabinet/:userID"
+              render={() => ( <Cabinet /> )} />
             </Switch>
               
           </BrowserRouter>
