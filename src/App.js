@@ -6,9 +6,6 @@ import Profile from './components/Profile';
 import Recipe from './components/Recipe';
 import Cabinet from './components/Cabinet';
 
-import { useAuth0 } from '@auth0/auth0-react'
-
-
 
 
 export default class App extends Component {

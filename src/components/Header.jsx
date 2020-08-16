@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     const {isAuthenticated, user} = useAuth0();
-    console.log(user)
     return (
         isAuthenticated ? (
             <div className="header">
