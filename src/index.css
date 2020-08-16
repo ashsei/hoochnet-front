@@ -1,73 +1,95 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Document Styling */
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-.header{
-  position: fixed;
-  height: 60px;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: lightgrey;
-}
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-.logo {
-  max-height: 100%;
-}
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
 
-.nav {
-  float: right;
-  list-style: none;
-}
+/* Header Styling */
+  .header{
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: lightgrey;
+  }
 
-.nav li {
-  display: inline;
-  padding: 5px;
-}
+  .logo {
+    max-height: 100%;
+  }
 
-/* .search-container {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  overflow-y: auto;
-} */
+  .nav {
+    float: right;
+    list-style: none;
+  }
 
-/*Show and hide*/
-.show {
-	display: inline-block;
-}
-.hide {
-	display: none;
-}
+  .nav li {
+    display: inline;
+    padding: 5px;
+  }
 
-.recipe-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+/* Search Styling */
+  /* !!! Would like this to display in a grid, dependent on media size */
+  /* .search-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    overflow-y: scroll;
+  } */
+  .search-container{
+    text-align: center;
+  }
 
-.drink-image{
-  max-height: 300px;
-}
+  .drink-thumbnail {
+    max-height: 100px
+  }
+  /*Show and Hide for Loading GIF*/
+  .show {
+    display: inline-block;
+  }
+  .hide {
+    display: none;
+  }
 
-.ingredients{
-  list-style-type: none;
-}
+/* Recipe Styling */
+  .recipe-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
-.header-li {
-  list-style-type: none;
-  text-decoration: underline;
-}
+  .drink-image{
+    max-height: 300px;
+  }
+
+  .ingredients{
+    list-style-type: none;
+  }
+
+  .header-li {
+    list-style-type: none;
+    text-decoration: underline;
+  }
+
+/* Profile Styling */
+  .profile-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }

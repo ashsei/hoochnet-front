@@ -43,13 +43,12 @@ export default class Search extends Component {
                 cancelToken: this.cancel.token,
             })
             .then((res) => {
-                const resultNotFoundMsg = !res.data.length ? 'There are no  search results. Please try another search.' : '';
+                let resultNotFoundMsg = !res.data.drinks.length && 'There were no results for that query. Please try another search.';
                 this.setState({
                     results: res.data.drinks,
                     message: resultNotFoundMsg,
                     loading: false,
                 });
-                console.log(res)
             })
             .catch((error) => {
                 if (axios.isCancel(error) || error) {
