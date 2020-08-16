@@ -51,3 +51,23 @@ code {
 	display: none;
 }
 
+.recipe-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.drink-image{
+  max-height: 300px;
+}
+
+.ingredients{
+  list-style-type: none;
+}
+
+.header-li {
+  list-style-type: none;
+  text-decoration: underline;
+}

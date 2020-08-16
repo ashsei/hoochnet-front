@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Loader from './loader.gif';
+import { Link } from "react-router-dom";
 
-export default class SearchV2 extends Component {
+// !!! Would like to have a title stating what the user has searched for above result display, edit the way that the results render as well. //
+export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,6 +15,7 @@ export default class SearchV2 extends Component {
             baseURL: 'https://www.thecocktaildb.com/api/json/v2/',
             key: process.env.REACT_APP_COCKTAIL_API_KEY,
             searchBase: '/search.php?s=',
+            searchURL: '',
         };
         this.cancel = '';
     };
@@ -28,7 +31,8 @@ export default class SearchV2 extends Component {
         }
     };
     fetchSearchResults = (query) => {
-        const searchURL = this.state.baseURL + this.state.key + this.state.searchBase + this.state.query
+        const searchURL = this.state.baseURL + this.state.key + this.state.searchBase + query;
+        this.setState({searchURL});
         if (this.cancel) {
             this.cancel.cancel()
         }
@@ -39,8 +43,10 @@ export default class SearchV2 extends Component {
                 cancelToken: this.cancel.token,
             })
             .then((res) => {
+                const resultNotFoundMsg = !res.data.length ? 'There are no  search results. Please try another search.' : '';
                 this.setState({
                     results: res.data.drinks,
+                    message: resultNotFoundMsg,
                     loading: false,
                 });
                 console.log(res)
@@ -50,27 +56,28 @@ export default class SearchV2 extends Component {
                     this.setState({
                         loading: false,
                         message: 'Failed to find any search results. Please check network connection or try a new search!',
-                    })
-                    console.log(error);
-                }
+                    });
+                };
             });
     };
     renderSearchResults = () => {
         const {results} = this.state;
-        if (Object.keys(results).length && results.length) {
-            return (
-                <div className="results-container">
-                    {results.slice(0,9).map((result) => {
-                        return (
-                            <>
-                                <h4 className="drink-name">{result.strDrink}</h4>
-                                <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
-                            </>
-                        )
-                    })}
-                </div>
-            );
-        };
+        if (results != null) {
+            if (Object.keys(results).length && results.length) {
+                return (
+                    <div className="results-container">
+                        {results.slice(0,9).map((result) => {
+                            return (
+                                <Link to = {`/recipes/${result.idDrink}`}>
+                                    <h4 className="drink-name">{result.strDrink}</h4>
+                                    <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
+                                </Link>
+                            )
+                        })}
+                    </div>
+                );
+            }
+        }
     };
     render() {
         const { query, message, loading } = this.state;
@@ -99,4 +106,3 @@ export default class SearchV2 extends Component {
     }
 }
 
-// !!! Figure out how to clear result display if user clears search field, also would like to have a title stating what the user has searched for above result display //
