@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { withRouter } from 'react-router';
+import AddToCabinet from "./AddToCabinet"
 
 
 class Cabinet extends Component {
@@ -30,15 +31,18 @@ class Cabinet extends Component {
     
     render () {
         return(
-            <ul className="cabinet">
-                <br /><br /><br />
-                {this.state.cabinetItems.map(result =>
-                <div key={result._id}>
-                    {(result.itemName) && (
-                    <li key={result._id}>{result.itemName}</li>)}
-                </div>
-                )}
-            </ul>
+            <>
+                <ul className="cabinet-items">
+                    <br /><br /><br />
+                    {this.state.cabinetItems.map(result =>
+                    <div key={result._id}>
+                        {(result.itemName) && (
+                        <li key={result._id}>{result.itemName}</li>)}
+                    </div>
+                    )}
+                </ul>
+                <AddToCabinet />
+            </>
         )
     }
     
