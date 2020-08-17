@@ -13,6 +13,7 @@ class Cabinet extends Component {
     }
     componentDidMount() {
         const userID = this.props.match.params.userID;
+        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
         const cabinetURL = "http://localhost:3003/cabinet/auth0|" + userID
 
         axios
@@ -41,7 +42,7 @@ class Cabinet extends Component {
                     </div>
                     )}
                 </ul>
-                <AddToCabinet />
+                <AddToCabinet userID={this.props.match.params.userID}/>
             </>
         )
     }

@@ -9,7 +9,8 @@ export default class extends Component {
             key: process.env.REACT_APP_COCKTAIL_API_KEY,
             searchBase: '/list.php?i=list',
             ingredientOptions: [],
-            listType: '',
+            selectedIngredient: '',
+            user: 'auth0|' + this.props.userID
         }
     }
     componentDidMount() {
@@ -27,10 +28,27 @@ export default class extends Component {
             }).catch(err => console.log(err))
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const body = {
+            itemName: this.state.selectedIngredient,  
+            userId: this.state.user
+        };
+        axios
+        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
+            .post('http://localhost:3003/cabinet/new', body)
+            .then(response => {
+                console.log(response);
+                console.log(response.data);
+            })
+            .catch(error => console.log(error));
+        window.location.reload();
+    }
+
     render() {
         return (
             <div>
-                <select value={this.state.listType} className="ingredient-dropdown" onChange={(e) => this.setState({listType: e.target.value})}>
+                <select value={this.state.listType} className="ingredient-dropdown" onChange={(e) => this.setState({selectedIngredient: e.target.value})}>
                     {this.state.ingredientOptions.map(option => (
                         <option
                             key={option.value}
@@ -38,6 +56,12 @@ export default class extends Component {
                         </option>
                     ))}
                 </select>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                    type='submit'
+                    value='Add to Cabinet'
+                    className='ingredient-add'/>
+                </form>
             </div>
         )
     }
