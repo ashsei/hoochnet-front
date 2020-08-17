@@ -29,6 +29,17 @@ class Cabinet extends Component {
             })
             .catch((error)=> console.log(error));
     }
+    handleSubmit = (event, result) => {
+        event.preventDefault();
+        axios
+        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
+            .delete('http://localhost:3003/cabinet/' + result.key)
+            .then(response => {
+                console.log(response);
+                console.log(response.data);
+            })
+        window.location.reload();
+    }
     
     render () {
         return(
@@ -38,7 +49,12 @@ class Cabinet extends Component {
                     {this.state.cabinetItems.map(result =>
                     <div key={result._id}>
                         {(result.itemName) && (
-                        <li key={result._id}>{result.itemName}</li>)}
+                        <li key={result._id}>
+                            {result.itemName} 
+                            <form onSubmit={event => this.handleSubmit(event, result)}>
+                                <input type="submit" value="X" />
+                            </form>
+                        </li>)}
                     </div>
                     )}
                 </ul>
