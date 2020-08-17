@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Recipe from './components/Recipe';
@@ -29,7 +30,7 @@ export default class App extends Component {
               <Route exact path="/cabinet/:userID"
               render={() => ( <Cabinet /> )} />
             </Switch>
-              
+            <Footer />
           </BrowserRouter>
       </div>
     )

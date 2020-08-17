@@ -7,6 +7,10 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image: url(./components/background1.jpg);
+    background-size: fill;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 
   code {
@@ -92,4 +96,25 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Styling */
+  .footer-container {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgrey;
+    padding-top: 15px;
   }
