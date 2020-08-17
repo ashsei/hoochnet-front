@@ -89,7 +89,8 @@ const Recipe = () => {
                     {(ingredient10 && measure10) && (<li>{measure10} of {ingredient10}</li>)}
                 </ul>
                 <button onClick={()=> window.location.href="/"}>Back to Home</button>
-                <button onClick={() => history.goBack()}>Back to Your Cabinet</button>
+                <button onClick={()=> window.location.href="/random"}>Back to Random</button>
+                <button onClick={() => history.goBack()}>Back to Cabinet</button>
             </div>
         )
 }

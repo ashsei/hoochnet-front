@@ -15,8 +15,8 @@ const Header = () => {
                 <img src={ Logo } className="logo" alt="HoochNet"/>
                 <ul className="nav">
                     <li><a href = "/">Home</a></li>
-                    <li><a href = "/">Random Drinks</a></li>
-                    <li><a href = "/">Our Favorites</a></li>
+                    <li><a href = "/random/">Random Drinks</a></li>
+                    <li><a href = "/">Popular Drinks</a></li>
                     <li><Link to = {`/cabinet/${user.sub.slice(6)}`}>My Cabinet</Link></li>
                     <li><a href = "/profile/">Profile</a></li>
                     <li><Logout /></li>
