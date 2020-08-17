@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from "axios";
 import { withRouter } from 'react-router';
 import AddToCabinet from "./AddToCabinet";
-const _ = require('underscore')
+import { Link } from 'react-router-dom';
+
 
 
 class Cabinet extends Component {
@@ -11,7 +12,7 @@ class Cabinet extends Component {
         this.state = {
             cabinetItems: [],
             selectedIngredients: [],
-            searchIngredients: '',
+            recipeResults: [],
         }
     }
     componentDidMount() {
@@ -95,16 +96,19 @@ class Cabinet extends Component {
                     selectedIngredients = selectedIngredients + this.state.selectedIngredients[i].itemName.replace(" ", '_')
                 }
             }
-            console.log(selectedIngredients)
         }
         const searchURL = 'https://www.thecocktaildb.com/api/json/v2/' + process.env.REACT_APP_COCKTAIL_API_KEY + '/filter.php?i=' + selectedIngredients
 
         axios
             .get(searchURL)
             .then(response => {
-                console.log(response)
                 console.log(response.data)
+                this.setState({
+                    recipeResults: response.data.drinks
+                })
+                console.log(this.state.recipeResults)
             })
+        
     }
     render () {
         return(
@@ -137,6 +141,15 @@ class Cabinet extends Component {
                     <button onClick={event => this.handleSearch(event)}>Search for Recipes</button>
                 </ul>
                 <AddToCabinet userID={this.props.match.params.userID}/>
+                <ul className="search-results">
+                    {this.state.recipeResults.length > 0 &&(
+                        <h3 className="results-header">Recipes Including Your Selected Ingredients</h3>
+                    )}
+                    {this.state.recipeResults.map(result =>
+                        <Link to = {`/recipes/${result.idDrink}/`}>
+                            <li>{result.strDrink}<img src={result.strDrinkThumb} className="drink-thumbnail"/></li>
+                        </Link>)}
+                </ul>
             </>
         )
     }

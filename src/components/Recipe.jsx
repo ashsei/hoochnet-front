@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Recipe = () => {
     // Axios Call Variables //
@@ -10,6 +11,7 @@ const Recipe = () => {
     const params = useParams();
     const cocktail = params.drinkID;
     const searchURL = baseURL + key + searchBase + cocktail
+    let history = useHistory();
     // Response UseState Hooks //
     // !!! Theres got to be a better way to do this right??? //
     let [drinkName, setDrinkName] = useState('')
@@ -86,7 +88,8 @@ const Recipe = () => {
                     {(ingredient9 && measure9) && (<li>{measure9} of {ingredient9}</li>)}
                     {(ingredient10 && measure10) && (<li>{measure10} of {ingredient10}</li>)}
                 </ul>
-                <a href="/">Back to Search</a>
+                <button onClick={()=> window.location.href="/"}>Back to Home</button>
+                <button onClick={() => history.goBack()}>Back to Your Cabinet</button>
             </div>
         )
 }
