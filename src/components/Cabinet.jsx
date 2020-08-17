@@ -11,6 +11,7 @@ class Cabinet extends Component {
         this.state = {
             cabinetItems: [],
             selectedIngredients: [],
+            searchIngredients: '',
         }
     }
     componentDidMount() {
@@ -83,14 +84,28 @@ class Cabinet extends Component {
         window.location.reload();
         console.log(this.state.selectedIngredients)
     }
-    // handleSearch = (event, result) => {
-    //     event.preventDefault();
-    //     const selectedIngredients = {if (result.incl) }
-    //     const searchURL = 'https://www.thecocktaildb.com/api/json/v2/' + process.env.REACT_APP_COCKTAIL_API_KEY + '/filter.php?i=' + selectedIngredients
+    handleSearch = (event) => {
+        event.preventDefault();
+        let selectedIngredients = []
+        for(let i = 0; i < this.state.selectedIngredients.length; i++) {
+            if (this.state.selectedIngredients[i].itemName) {
+                if (i < this.state.selectedIngredients.length - 1){
+                    selectedIngredients = selectedIngredients + this.state.selectedIngredients[i].itemName.replace(" ", '_') + ','
+                } else {
+                    selectedIngredients = selectedIngredients + this.state.selectedIngredients[i].itemName.replace(" ", '_')
+                }
+            }
+            console.log(selectedIngredients)
+        }
+        const searchURL = 'https://www.thecocktaildb.com/api/json/v2/' + process.env.REACT_APP_COCKTAIL_API_KEY + '/filter.php?i=' + selectedIngredients
 
-    //     axios
-    //         .get()
-    // }
+        axios
+            .get(searchURL)
+            .then(response => {
+                console.log(response)
+                console.log(response.data)
+            })
+    }
     render () {
         return(
             <>
@@ -119,6 +134,7 @@ class Cabinet extends Component {
                             </li>)}
                         </div>
                     )}
+                    <button onClick={event => this.handleSearch(event)}>Search for Recipes</button>
                 </ul>
                 <AddToCabinet userID={this.props.match.params.userID}/>
             </>
