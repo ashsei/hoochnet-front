@@ -16,7 +16,7 @@ const Header = () => {
                 <ul className="nav">
                     <li><a href = "/">Home</a></li>
                     <li><a href = "/random/">Random Drinks</a></li>
-                    <li><a href = "/">Popular Drinks</a></li>
+                    <li><a href = "/popular/">Popular Drinks</a></li>
                     <li><Link to = {`/cabinet/${user.sub.slice(6)}`}>My Cabinet</Link></li>
                     <li><a href = "/profile/">Profile</a></li>
                     <li><Logout /></li>

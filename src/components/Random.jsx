@@ -26,7 +26,7 @@ export default class Random extends Component {
     }
     render() {
         return (
-            <div className="results-container">
+            <div className="random-results-container">
                 <ul>
                 {this.state.searchResults.map(result => 
                     <li>

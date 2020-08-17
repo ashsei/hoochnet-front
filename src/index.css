@@ -112,9 +112,8 @@
 /* Footer Styling */
   .footer-container {
     text-align: center;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background-color: lightgrey;
     padding-top: 15px;
+    padding-bottom: 15px;
   }

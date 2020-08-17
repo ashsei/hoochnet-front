@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import Recipe from './components/Recipe';
 import Cabinet from './components/Cabinet';
 import Random from './components/Random';
+import Popular from './components/Popular';
 
 
 
@@ -32,7 +33,10 @@ export default class App extends Component {
               render={() => ( <Cabinet /> )} />
               {/* Random Route */}
               <Route exact path="/random/"
-              render={() => ( <Random />)} />
+              render={() => ( <Random /> )} />
+              {/* Popular Route */}
+              <Route exact path="/popular"
+              render={() => ( <Popular /> )} />
             </Switch>
             <Footer />
           </BrowserRouter>
