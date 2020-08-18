@@ -17,9 +17,14 @@ class Cabinet extends Component {
     }
     componentDidMount() {
         const userID = this.props.match.params.userID;
-        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
-        const cabinetURL = "http://localhost:3003/cabinet/auth0|" + userID
-        const ingredientURL = "http://localhost:3003/ingredient/auth0|" + userID
+        let baseURL;
+        if(process.env.NODE_ENV === 'development') {
+            baseURL = 'http://localhost:3003/'
+        } else {
+            baseURL = 'https://hoochnet-back.herokuapp.com/'
+        }
+        const cabinetURL = baseURL + "cabinet/auth0|" + userID
+        const ingredientURL = baseURL + "ingredient/auth0|" + userID
 
         axios
             .get(cabinetURL)
@@ -48,9 +53,14 @@ class Cabinet extends Component {
     }
     handleDelete = (event, result) => {
         event.preventDefault();
+        let baseURL;
+        if(process.env.NODE_ENV === 'development') {
+            baseURL = 'http://localhost:3003/'
+        } else {
+            baseURL = 'https://hoochnet-back.herokuapp.com/'
+        }
         axios
-        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
-            .delete('http://localhost:3003/cabinet/' + result.key)
+            .delete(baseURL + 'cabinet/' + result.key)
             .then(response => {
                 console.log(response);
                 console.log(response.data);
@@ -59,9 +69,14 @@ class Cabinet extends Component {
     }
     handleUnselect = (event, result) => {
         event.preventDefault();
+        let baseURL;
+        if(process.env.NODE_ENV === 'development') {
+            baseURL = 'http://localhost:3003/'
+        } else {
+            baseURL = 'https://hoochnet-back.herokuapp.com/'
+        }
         axios
-        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
-            .delete('http://localhost:3003/ingredient/' + result.key)
+            .delete(baseURL + 'ingredient/' + result.key)
             .then(response => {
                 console.log(response);
                 console.log(response.data);
@@ -69,14 +84,19 @@ class Cabinet extends Component {
         window.location.reload();
     }
     handleSelect = (event, result) => {
-        event.preventDefault()
+        event.preventDefault();
+        let baseURL;
+        if(process.env.NODE_ENV === 'development') {
+            baseURL = 'http://localhost:3003/'
+        } else {
+            baseURL = 'https://hoochnet-back.herokuapp.com/'
+        }
         const body = {
             itemName: result.itemName,  
             userId: 'auth0|' + this.props.match.params.userID
         };
         axios
-        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
-            .post('http://localhost:3003/ingredient/new', body)
+            .post(baseURL + 'ingredient/new', body)
             .then(response => {
                 console.log(response);
                 console.log(response.data);

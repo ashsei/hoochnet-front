@@ -34,9 +34,14 @@ export default class extends Component {
             itemName: this.state.selectedIngredient,  
             userId: this.state.user
         };
+        let baseURL;
+        if(process.env.NODE_ENV === 'development') {
+            baseURL = 'http://localhost:3003/cabinet/new'
+        } else {
+            baseURL = 'https://hoochnet-back.herokuapp.com/cabinet/new'
+        }
         axios
-        // !!! EDIT THIS URL FOR DEPLOYMENT !!! //
-            .post('http://localhost:3003/cabinet/new', body)
+            .post(baseURL, body)
             .then(response => {
                 console.log(response);
                 console.log(response.data);
