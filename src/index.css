@@ -1,10 +1,15 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Diplomata&family=Acme&family=Smokum&family=Ubuntu&display=swap');
+
+
 /* Document Styling */
 
   html {
     background-image: url(./components/background.gif);
-    background: fill;
+    background: stretch;
     background-position: center center fixed;
     background-repeat: no-repeat;
+    background-color: #E0D8AE;
   }
   body {
     margin: 0;
@@ -23,62 +28,99 @@
 /* Header Styling */
   .header{
     position: fixed;
-    height: 60px;
+    height: 75px;
     width: 100%;
     top: 0;
     left: 0;
-    background-color: none;
-
+    background-color: #E0D8AE;
   }
 
   .logo {
     max-height: 100%;
+    max-width: 35%;
+    display: inline;
+    padding-top: 15px;
   }
 
   .nav {
     float: right;
     list-style: none;
+    font-family: 'Smokum', cursive;
+    font-size: 25px;
   }
 
-  .nav li {
+  .nav li, .nav a {
     display: inline;
     padding: 5px;
+    text-decoration: none;
+    color: #FB8F33;
+    margin: auto 0;
+  }
+
+  .nav-button {
+    background: none;
+    border: none;
+    display: inline;
+    font-family: 'Smokum', cursive;
+    font-size: 25px;
+    color: #FB8F33;
   }
 
 /* Search Styling */
-  /* !!! Would like this to display in a grid, dependent on media size */
-  /* .search-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    overflow-y: scroll;
-  } */
 
   .search-container{
     text-align: center;
     padding-top: 150px;
+    height: auto;
+    margin-bottom: 200px;
+    overflow: hidden;
   }
   .results {
     display: inline-flex;
     flex-direction: row;
     padding: 5px;
-    overflow: auto;
-    background: white;
+    background: #E0D8AE;
     margin: 5px;
     border-radius: 10px;
     max-width: 100px;
     height: 200px;
+    color: #FB8F33;
+    font-family: 'Smokum', Cursive;
+    overflow: hidden;
+    border: #FB8F33 solid 2px;
+    padding-bottom: 10px;
+  }
+
+  .results a{
+    color: #FB8F33;
+    font-family: 'Smokum', Cursive;
+    font-size: 20px
   }
   .intro-text{
-    padding-bottom: 220px;
+    padding-bottom: 100px;
+    font-family: 'Diplomata', cursive;
+    color: #FB8F33
   }
-  .page-welcome {
-    text-align: left;
+  
+  .search-info, .message {
+    font-family: 'Smokum', cursive;
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: #fff9eb;
   }
-  .page-about {
-    text-align: right;
+
+  #search-input {
+    text-align: center;
+    width: 250px;
+    height: 25px;
+    border: #FB8F33 solid 2px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #E0D8AE
+  }
+  .results-container {
+    height: auto;
+    margin-bottom: 10px;
   }
   .drink-thumbnail {
     max-height: 100px
@@ -135,12 +177,22 @@
 
 /* Footer Styling */
   .footer-container {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     text-align: center;
     width: 100%;
-    background-color: lightgray;
     padding-top: 15px;
-    padding-bottom: 15px;
+    color: #FB8F33;
+    font-family: 'Smokum', Cursive;
+    max-height: 150px;
+    background-color: #E0D8AE;
+    font-size: 20px;
+    margin-top: 100px;
+  }
 
+  .footer-container a {
+    text-decoration: none;
+    color: #FB8F33;
+    font-family: 'Smokum', Cursive;
+    font-size: 25px;
   }

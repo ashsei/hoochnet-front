@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from './hoochnet.png'
+import Logo from './Logo.png'
 import Login from './Login';
 import { useAuth0 } from "@auth0/auth0-react";
 import Logout from './Logout';

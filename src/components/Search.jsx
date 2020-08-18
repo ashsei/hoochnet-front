@@ -97,7 +97,7 @@ export default class Search extends Component {
                         type="text"
                         value={query}
                         id="search-input"
-                        placeholder="Search Here"
+                        placeholder="🍹🍻🍸Search Here🍸🍻🍹"
                         onChange={this.handleOnInputChange}
                     />
                 </label>
