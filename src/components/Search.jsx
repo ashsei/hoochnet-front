@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Loader from './loader.gif';
 import { Link } from "react-router-dom";
+import Login from "./Login.jsx"
 
 // !!! Would like to have a title stating what the user has searched for above result display, edit the way that the results render as well. //
 export default class Search extends Component {
@@ -67,10 +68,12 @@ export default class Search extends Component {
                     <div className="results-container">
                         {results.slice(0,9).map((result) => {
                             return (
-                                <Link to = {`/recipes/${result.idDrink}`}>
-                                    <h4 className="drink-name">{result.strDrink}</h4>
-                                    <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
-                                </Link>
+                                <div className="results">
+                                    <Link to = {`/recipes/${result.idDrink}`}>
+                                        <h4 className="drink-name">{result.strDrink}</h4>
+                                        <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />              
+                                    </Link>
+                                </div>
                             )
                         })}
                     </div>
@@ -83,9 +86,11 @@ export default class Search extends Component {
 
         return (
             <div className="search-container">
-                <h1 className="page-welcome">Welcome to HoochNet!</h1>
-                <h2 className="page-about">Short for "Hooch Cabinet", we aim to serve as your online liquor cabinet and barkeep!</h2>
-                <br /><br />
+                <div className="intro-text">
+                    <h1 className="page-welcome">Welcome to HoochNet!</h1>
+                    <h2 className="page-about">Short for "Hooch Cabinet", we aim to serve as your online liquor cabinet and barkeep!</h2>
+                    <br />
+                </div>
                 <h3 className="search-info">Have a cocktail on your mind, but can't remember how to make it? <br /><br /> Search for it below!</h3>
                 <label className="search-label" htmlFor="search-input">
                     <input
@@ -96,10 +101,11 @@ export default class Search extends Component {
                         onChange={this.handleOnInputChange}
                     />
                 </label>
-                { message && <p className="message">{message}</p> }
+                { message && <p className="message">{message}</p> }<br />
                 <img src={Loader} className={`search-loading ${loading ? 'show' :
                 'hide' }`} alt="Loading" />
                 { this.renderSearchResults() }
+                
             </div>
         )
     }
