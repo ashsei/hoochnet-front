@@ -33,7 +33,7 @@ As the project progressed and evolved I wrote manual to be done lists at the beg
 - Styling Issues (Mainly revolving around media based styling)
 - Sometimes when the live search field is empty, results will still start.
 - Need to get rid of randomize button on popular page.
-
+- Some searches based on selected ingredients don't return correct results (not sure if this is stemming from the application or from the API)
 
 ## Forward Thoughts
 - Be able to allow users to bookmark/favorite their favorite recipes.
