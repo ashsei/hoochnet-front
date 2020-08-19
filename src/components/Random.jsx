@@ -26,10 +26,11 @@ export default class Random extends Component {
     }
     render() {
         return (
-            <div className="random-results-container">
+            <div className="search-container">
                 <ul>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
                 {this.state.searchResults.map(result => 
-                    <li>
+                    <li className="results">
                         <Link to = {`/recipes/${result.idDrink}`}>
                             <h4 className="drink-name">{result.strDrink}</h4>
                             <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
@@ -37,7 +38,7 @@ export default class Random extends Component {
                     </li>
                 )}
                 </ul>
-                <button onClick={()=> window.location.reload()}>Randomize!</button>
+                <button onClick={()=> window.location.reload()} id="search-input">Randomize!</button>
             </div>
         )
     }

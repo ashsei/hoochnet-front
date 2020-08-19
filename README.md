@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hoochnet
+### Created by Ashton RK Seibel ~ 2020 ~ All Rights Reserved
 
-## Available Scripts
+## Github Repositories:
+Front End: https://github.com/ashsei/hoochnet-front
+Back End: https://github.com/ashsei/hoochnet-back
 
-In the project directory, you can run:
+## Hosted on Heroku at:
+https://hoochnet.herokuapp.com/
 
-### `npm start`
+## Introduction and User Stories
+Welcome to HoochNet! Short for Hooch Cabinet, this web application retrieves cocktail recipes from The Cocktail DB API, and allows user to build an online liquor cabinet that recommends cocktail recipes based on selected ingredients. There is also functionality to see the 20 most popular recipes, and 10 random recipes.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Approach
+I first broke this project down on a wireframe detailing the pathing and features of the application:
+![wireframe](/public/wireframe.png)
+I then broke this down into components on a Trello board: 
+![trello](/public/ProjectBreakdown.png)
+As the project progressed and evolved I wrote manual to be done lists at the beginning of each working day.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Technologies Used
+### Full Stack Application Utilizing the Following Structures and Technologies:
+- MERN Stack (Mongoose, Express, React, and Node.js)
+- CRUD Routing for Models (Within Backend)
+- User Authentication Via Auth0
+- Cocktail DB API Integration
+- Axios API Calls
+- React Hooks
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Known Bugs
+- Styling Issues (Mainly revolving around media based styling)
+- Sometimes when the live search field is empty, results will still start.
+- Need to get rid of randomize button on popular page.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Forward Thoughts
+- Be able to allow users to bookmark/favorite their favorite recipes.
+- Cocktail DB allows entries to the DB from the public, so integrating this functionality would be nice.
+- Will probably restyle, to be more user friendly.
+- Would like to apply a CSS framework.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Credit Where Credit Is Due:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-Cocktail DP API: https://www.thecocktaildb.com/

@@ -26,10 +26,13 @@ export default class Popular extends Component {
     }
     render() {
         return (
-            <div className="popular-results-container">
+            <div className="search-container">
                 <ul>
+                    <br />
+                    <h1 className="intro-text">Popular Drinks</h1>
+                <br/>
                 {this.state.searchResults.map(result => 
-                    <li>
+                    <li className="results">
                         <Link to = {`/recipes/${result.idDrink}`}>
                             <h4 className="drink-name">{result.strDrink}</h4>
                             <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
