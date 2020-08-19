@@ -132,7 +132,7 @@ class Cabinet extends Component {
     }
     render () {
         return(
-            <>
+            <div className="cabinet-container">
                 <ul className="cabinet-items">
                     <br /><br /><br />
                     <p>Your Cabinet Ingredients</p>
@@ -161,16 +161,20 @@ class Cabinet extends Component {
                     <button onClick={event => this.handleSearch(event)}>Search for Recipes</button>
                 </ul>
                 <AddToCabinet userID={this.props.match.params.userID}/>
-                <ul className="search-results">
+                <ul className="search-container">
                     {this.state.recipeResults.length > 0 &&(
                         <h3 className="results-header">Recipes Including Your Selected Ingredients</h3>
                     )}
                     {this.state.recipeResults.map(result =>
-                        <Link to = {`/recipes/${result.idDrink}/`}>
-                            <li>{result.strDrink}<img src={result.strDrinkThumb} className="drink-thumbnail"/></li>
-                        </Link>)}
+                        <li className="results">
+                            <Link to = {`/recipes/${result.idDrink}/`}>
+                                <h4 className="drink-name">{result.strDrink}</h4>
+                                <img className="drink-thumbnail" src={result.strDrinkThumb} alt={result.strDrink} />
+                            </Link>
+                        </li>
+                        )}
                 </ul>
-            </>
+            </div>
         )
     }
 }
