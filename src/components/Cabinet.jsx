@@ -135,11 +135,11 @@ class Cabinet extends Component {
             <div className="cabinet-container">
                 <ul className="cabinet-items">
                     <br /><br /><br />
-                    <p>Your Cabinet Ingredients</p>
+                    <h3>Your Cabinet Ingredients</h3>
                     {this.state.cabinetItems.map(result =>
                     <div>
                         {(result.itemName) && (
-                        <li>
+                        <li className="cabinet">
                             {result.itemName} 
                             <button onClick={event => this.handleSelect(event, result)}>+</button>
                             <button onClick={event => this.handleDelete(event, result)}>-</button>
@@ -147,12 +147,13 @@ class Cabinet extends Component {
                     </div>
                     )}
                 </ul>
+                <AddToCabinet userID={this.props.match.params.userID}/>
                 <ul className="selected-ingredients">
-                    <p>Your Selected Ingredients</p>
+                    <h3>Your Selected Ingredients</h3>
                     {this.state.selectedIngredients.map(result =>
                         <div>
                             {(result.itemName) && (
-                            <li>
+                            <li className="selected-ingredients">
                                 {result.itemName}
                                 <button onClick={event => this.handleUnselect(event, result)}>-</button>
                             </li>)}
@@ -160,7 +161,7 @@ class Cabinet extends Component {
                     )}
                     <button onClick={event => this.handleSearch(event)}>Search for Recipes</button>
                 </ul>
-                <AddToCabinet userID={this.props.match.params.userID}/>
+                
                 <ul className="search-container">
                     {this.state.recipeResults.length > 0 &&(
                         <h3 className="results-header">Recipes Including Your Selected Ingredients</h3>

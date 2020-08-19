@@ -40,7 +40,6 @@ export default class Popular extends Component {
                     </li>
                 )}
                 </ul>
-                <button onClick={()=> window.location.reload()}>Randomize!</button>
             </div>
         )
     }

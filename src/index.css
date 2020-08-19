@@ -89,6 +89,7 @@
     overflow: hidden;
     border: #FB8F33 solid 2px;
     padding-bottom: 10px;
+    list-style-type: none;
   }
 
   .results a{
@@ -174,6 +175,21 @@
     text-align: center;
   }
 
+  .cabinet-items {
+    list-style-type: none;
+    color: black;
+    font-family: 'Smokum', Cursive;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .selected-ingredients {
+    list-style-type: none;
+    color: black;
+    font-family: 'Smokum', Cursive;
+    font-size: 20px;
+    text-align: center;
+  }
 
 
 
